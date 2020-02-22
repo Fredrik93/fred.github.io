@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Table from './Table'
 import { render } from '@testing-library/react'
+import Form from './Form'
 
 class App extends Component {
     state = {
@@ -21,8 +22,14 @@ class App extends Component {
         return (
             <div className="container">
                 <Table characterData={characters} removeCharacter={this.removeCharacter} />
+                <Form handleSubmit={this.handleSubmit} />
             </div>
         )
+    }
+    handleSubmit = character => {
+        this.setState({
+            characters: [...this.state.characters, character]
+        })
     }
 }
 
